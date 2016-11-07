@@ -1,0 +1,8 @@
+bend
+arch
+curve
+curl
+coil
+flex
+contract
+tense

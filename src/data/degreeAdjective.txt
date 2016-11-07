@@ -1,0 +1,8 @@
+180 degree
+long 
+short
+360 degree
+90 degree
+45 degree
+anti-clockwise
+clockwise
