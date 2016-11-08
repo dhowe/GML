@@ -9,11 +9,11 @@
 
 #### In Processing
 - Clone the project to a local folder
-- Use Processing 3.x with RiTa and netOSC installed
-- Double-click p5/TestGrammarGML/TestGrammarGML.pde, then press play
+- Start Processing 3.x (you must have RiTa and netOSC installed)
+- Open GML/p5/TestGrammarGML/TestGrammarGML.pde and press play
 
 
-##### Note: RiTa grammars should now be in proper JSON or YAML format
+##### Note: RiTa grammars must now be in proper JSON or YAML format
 
 
 
