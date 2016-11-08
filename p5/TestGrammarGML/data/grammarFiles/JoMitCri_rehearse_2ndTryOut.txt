@@ -1,0 +1,98 @@
+#
+#//////////////////////////////////////////////////
+#
+# 4 phrases for Claudia remix
+# KISS2011 Porto
+#
+#//////////////////////////////////////////////////
+
+#	she walks directly into the space from the left side
+#   mitsu uses the bow forgetfully <attitudeAdverb>
+#	Like the music she maps the space using eyes and feet 
+#	slowly space becomes time
+#	delicately she waits in silence, 
+#	she finds stillness and breathes 
+#	she is breathing gently
+#	her intention is breath extending into the air
+#	air becomes lines
+#	she catches and bends delicately
+#	she transfers water from one limb to the other
+#	first feet then hands then legs 
+#	a cephlaphage explores the space in anti-clockwise paths
+
+
+
+{<start>
+<phrase1> / / <mitsuPhrase> / / <phrase2> / / <cristianPhrase> | 
+<mitsuPhrase> / / <phrase3> / / <cristianPhrase> / / <phrase4> |
+<mitsuPhrase> / / <cristianPhrase> / / <phrase1> / / <mitsuPhrase> |
+<cristianPhrase> / / <phrase3> / /  <mitsuPhrase> / / <phrase2> 
+}
+
+{
+<phrase1>
+<oneOfUs> `conjugate("singular", "3rd", "s", <movementVerbDirectional>);` into <partsOfTheSpace> from the <choice> side. / 
+<timingAdverb> <oneOfUs>  `conjugate("singular", "3rd", "s", <pathOfLimb>);` the <scene> using <bodyPartsSingularOfPair> and `unique(<bodyPartsPlural>);`. /
+<timingAdverb> space becomes time. / | <phrase1> / The projector is off. 
+}
+
+
+{
+<phrase2>
+<flowAdverb>, <oneOfUs> `conjugate("singular", "3rd", "s", <movementVerbDirectional>);` within silence. /
+<oneOfUs> has found <endResult> and `conjugate("singular", "3rd", "s", <nonMovementVerb>);`. /
+<oneOfUs> is breathing <attitudeAdverb>... `synonym(<attitudeAdverb>);` ...<attitudeAdverb>. /
+The intention is for the breath to <movementVerbExtension> into <partsOfTheSpace>. /
+}
+
+
+{<phrase3>
+Air becomes <visualShape>. /
+<oneOfUs> `conjugate("singular", "3rd", "s", <movementVerbFlexion>);` them and `conjugate("singular", "3rd", "s", <movementVerbFlexion>);` her <bodyPartsPlural> <attitudeAdverb>. /
+<elements> `conjugate("singular", "3rd", "s", <transferenceOfWeight>);`  from one limb to the other. /
+First the <bodyPartsSingularOfOne> then <bodyPartsPlural> then <bodyPartsPlural>. /
+}
+
+
+{<phrase4>
+<possibleAnimal> `conjugate("singular", "3rd", "s", <movementVerbDirectional>);` around the <scene> in <degreeAdjective> `plural(<visualShape>);`.  /
+}
+
+
+{<choice>
+left | right | other | out
+}
+
+{<possibleAnimal>
+Three animals | <oneOfUs> | Like a `synonym("creature");` <oneOfUs> | As a creature | Cristian 
+}
+
+{<scene>
+room | stage | table |  audience | Cristian | screens | walls | floor
+}
+
+{<mitsuImpulse>
+the bow | his fingertips | chopsticks | green mallet | all the things on the floor 
+}
+
+{<mitsuPhrase>
+ Mitsu uses <mitsuImpulse> <attitudeAdverb> for <duration> | Mitsu explores <mitsuFrequency> space |
+ Mitsu `conjugate("singular", "3rd", "s", <lossOfBalance>);` 
+}
+
+{<cristianPhrase>
+Cristian `conjugate("singular", "3rd", "s", <movementVerbDirectional>);` towards <objects> <flowAdverb> |
+Cristian `conjugate("singular", "3rd", "s", <movementVerbDirectional>);` towards <objects> to explore <elements> sound.
+}
+
+{<objects>
+a different computer | someone | JP_3 | orange mat | screen | metal | projector
+}
+
+{ <mitsuFrequency>
+low | mediem | high
+}
+
+{<oneOfUs>
+Jou | Mitsu | Cristian 
+}

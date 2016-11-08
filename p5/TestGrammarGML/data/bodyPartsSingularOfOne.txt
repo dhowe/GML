@@ -1,0 +1,24 @@
+head
+chest
+pelvis
+spine
+neck
+hip
+upper back
+lower back
+middle back
+belly
+face
+ass
+top of the head
+upper-body
+lower-body
+forehead
+back of the body
+side of the body
+front of the body
+back of the head
+waist
+chin
+back
+hair

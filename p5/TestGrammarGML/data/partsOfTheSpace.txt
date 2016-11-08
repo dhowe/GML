@@ -1,0 +1,13 @@
+the floor
+the front of the space
+the back of the space
+the left of the space
+the right of the space
+the middle of the space
+the back
+the front
+the air
+zone 1
+zone 2
+zone 3
+zone 4
