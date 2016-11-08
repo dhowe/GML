@@ -21,6 +21,7 @@ Generative Movement Language is a context-free grammar generator.
  
  */
 
+import java.io.File;
 import java.util.*;
 
 import javax.swing.JFileChooser;
@@ -29,13 +30,18 @@ import processing.core.*;
 import oscP5.*;
 import netP5.*;
 import rita.*;
+import rita.support.Conjugator;
 
 public class GenerativeMovementLanguage extends PApplet {
-
+	
+	RiText[] rts;
+	RiGrammar rg;
+	Conjugator rc;
+	RiLexicon lexicon;
+	
 	OscP5 oscP5;
 	JFileChooser chooser;
-	RiLexicon lexicon;
-	NetAddress slimeLocation = new NetAddress("169.254.67.151", 8000);
+	NetAddress slimeLocation;
 
 	// the total duration of matched presets sequence in seconds
 	float playDuration = (60 * 3);
@@ -47,9 +53,6 @@ public class GenerativeMovementLanguage extends PApplet {
 
 	PFont font;
 	int ypos = 5;
-	RiText[] rts;
-	RiGrammar rg;
-
 	String pathToWordLists;
 	String pathToGrammarFiles;
 	String[] wordListFilenames;
@@ -88,14 +91,20 @@ public class GenerativeMovementLanguage extends PApplet {
 	}
 	
 	public void setup() {
-
+		rc = new Conjugator();
+		RiGrammar rg = new RiGrammar();
+		rg.loadFrom("grammarFiles/CristianImprov1.json");
+		System.out.println(rg.expand(this));
+		if (1==1) return;
 		frameRate(5);
 		smooth();
 		rectMode(CORNERS);
 		textAlign(LEFT);
 
+		slimeLocation = new NetAddress("169.254.67.151", 8000);
 		lexicon = new RiLexicon(this);
 		chooser = new JFileChooser();
+		rc = new Conjugator();
 		//
 		// edit this with the directory which contains the wordlists referenced by
 		// the Grammar
@@ -106,7 +115,7 @@ public class GenerativeMovementLanguage extends PApplet {
 																								// sketch data folder
 
 		println("Checking " + pathToWordLists+" ...");
-		wordListFilenames = ListFiles.filesInSameDirectory(this, pathToWordLists);
+		wordListFilenames = filesInSameDirectory(pathToWordLists);
 		println("Found " + wordListFilenames.length + " word lists:");
 
 		// the location of the context free grammar files,
@@ -115,8 +124,8 @@ public class GenerativeMovementLanguage extends PApplet {
 		pathToGrammarFiles = pathToWordLists + "/grammarFiles/"; // inside
 																															// (wordlistsDir)/grammarFiles
 
-		grammarFiles = ListFiles.filesInSameDirectory(this, pathToGrammarFiles);
-		println("Found grammar files:" + grammarFiles.length);
+		grammarFiles = filesInSameDirectory(pathToGrammarFiles);
+		println("Found "+grammarFiles.length+" grammar files");
 		if (grammarFiles.length == 0) {
 			fill(0);
 			text("Grammar files missing!", width * 0.5f, height * 0.5f);
@@ -225,7 +234,7 @@ public class GenerativeMovementLanguage extends PApplet {
 		ypos = 80;
 
 		try {
-			result = rg.expand(); // build string from grammar file, the moment of
+			result = rg.expand(this); // build string from grammar file, the moment of
 														// generation
 			date = new Date();
 		}
@@ -662,21 +671,47 @@ public class GenerativeMovementLanguage extends PApplet {
 		presetPlaySequence = new ArrayList(); // to hold the numbers
 	}
 
-	/*// NEVER CALLED?
-	 * // conjugate verb method called from Grammar file! String conjugate(String
-	 * number, String person, String tense, String verb) {
-	 * 
-	 * if (tense.equals("ing")) { tense = "present"; //TODO:
-	 * rc.setProgressive(true); } else if (tense.equals("s")) { tense = "present";
-	 * // "present simple"; }
-	 * 
-	 * Map<String, Integer> args = new HashMap<String, Integer>();
-	 * args.put("tense", RiTa.PRESENT_TENSE); args.put("person", person);
-	 * args.put("number", number);
-	 * 
-	 * String s = RiTa.conjugate(verb, args); //TODO: if (rc.isPassive()) s +=
-	 * " by"; return s; }
-	 */
+	String conjugate(String number, String person, String tense, String verb) {
+		
+	  if (tense.equals("ing")) {
+	    tense="present";
+	    rc.setProgressive(true);
+	  }
+	  else if (tense.equals("s")) {
+	    tense="present";    // "present simple";
+	  }
+
+	  String s = rc.conjugate(number, person, tense, verb); 
+	  if (rc.isPassive()) s += " by";
+	  
+	  return s;
+	} 
+
+
+	/*String conjugate(String number, String person, String tense, String verb) {
+				
+	  if (tense.equals("ing")) {
+	    tense = "present"; 
+	    //TODO: rc.setProgressive(true);
+	  }
+	  else if (tense.equals("s")) {
+	    tense = "present";   
+	  }
+	  
+	  Map options = createVerbMap(number, person, tense);
+
+	  String s = RiTa.conjugate(verb, options); 
+	  //TODO: if (rc.isPassive()) s += " by";
+	  return s;
+	}
+
+	private Map createVerbMap(String number, String person, String tense) {
+		 Map<String, Integer> args = new HashMap<String, Integer>();
+		 args.put("tense", RiTa.PRESENT_TENSE);
+//		 args.put("person", person);
+//		 args.put("number", number);
+		return args;
+	}*/
 
 	// capitalise method called from Grammar file!
 	String capitalise(String word) {
@@ -694,12 +729,9 @@ public class GenerativeMovementLanguage extends PApplet {
 
 	// look for unique word, first find which rule the word belongs to then
 	// keep picking from it until the word does not repeat itself
-	//
-	//
-
 	String unique(String word) {
 
-		// find which rule a word belongs to , code by Daniel Howe
+		// find which rule a word belongs to, code by Daniel Howe
 		String tempBuffer = "";
 		String target = word;
 		String parentRule = "";
@@ -708,6 +740,8 @@ public class GenerativeMovementLanguage extends PApplet {
 		Map defs = rg._rules;
 		for (Iterator it = defs.keySet().iterator(); it.hasNext();) {
 			String rule = (String) it.next();
+			System.out.println(rule+": "+defs.get(rule));
+			if (1==1) continue;
 			String def = (String) defs.get(rule); // converts all the terminals of the
 																						// rule into a string
 
@@ -771,6 +805,32 @@ public class GenerativeMovementLanguage extends PApplet {
 		 */
 		return n;
 	}
+	
+	String[] filesInSameDirectory(String path) {
+
+		/**
+		 * List Text Files modification of listing-files taken from
+		 * http://wiki.processing.org/index.php?title=Listing_files
+		 * 
+		 * @author antiplastik
+		 */
+
+		// we'll have a look in the data folder
+		java.io.File folder = new java.io.File(dataPath(path));
+
+		// list the files in the data folder passing the filter as parameter
+		return folder.list(movFilter);
+	}
+
+	// let's set a filter (which returns true if file's extension is .txt)
+
+	java.io.FilenameFilter movFilter = new java.io.FilenameFilter() {
+
+		public boolean accept(File dir, String name) {
+
+			return ((name.toLowerCase().endsWith(".json")) || (name.toLowerCase().startsWith("Dance")));
+		}
+	};
 	
 	public static void main(String[] args) {
 
