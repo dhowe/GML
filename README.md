@@ -1,6 +1,6 @@
 
 ### Generative Movement Language
-##### by Cristian Vogel
+by Cristian Vogel
 
 
 #### In Eclipse
@@ -12,8 +12,11 @@
 - Start Processing 3.x (you must have RiTa and netOSC installed)
 - Open GML/p5/TestGrammarGML/TestGrammarGML.pde and press play
 
+<br>
 
 ##### Note: RiTa grammars must now be in proper JSON or YAML format
+
+<br>
 
 
 
