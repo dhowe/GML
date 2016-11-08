@@ -5,7 +5,7 @@ by Cristian Vogel
 
 #### In Eclipse
 - Clone and load the project in Eclipse
-- Right-click on TestGrammarGML.java and select run-as-application
+- Right-click on TestGrammarGML.java and select Run-As-Java-Application
 
 #### In Processing
 - Clone the project to a local folder
