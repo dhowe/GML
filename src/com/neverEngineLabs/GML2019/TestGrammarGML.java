@@ -1,4 +1,4 @@
-/*
+package com.neverEngineLabs.GML2019;/*
 Generative Movement Language is a context-free grammar generator.
  
  It uses a lexicon of movement language, based loosely on 
@@ -39,6 +39,7 @@ public class TestGrammarGML extends PApplet {
 		
 		textSize(20);
 		textAlign(CENTER, CENTER);
+		surface.setTitle("GenMov2019");
 	}
 	
 	public void mouseClicked() {

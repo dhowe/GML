@@ -1,7 +1,0 @@
-shake
-stroke
-touch
-brush
-throw
-caress
-rub

@@ -1,18 +1,25 @@
-import java.io.File;
+package com.neverEngineLabs.GML2019;
 
+import java.io.File;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import processing.core.PApplet;
 import rita.*;
 import rita.support.Conjugator;
 
 public class GrammarGML {
-	
+
 	protected PApplet pApplet;
 	protected RiGrammar grammar;
 	protected Conjugator conjugator;
 	private String lineBreaker;
 
-	public GrammarGML(PApplet p) {
-		this(p, "/");
+	public GrammarGML(PApplet p) {this(p, "/");
 	}
 		
 	public GrammarGML(PApplet p, String lineBreakChar) {
@@ -40,8 +47,20 @@ public class GrammarGML {
 		RiGrammar rg = new RiGrammar();
 		rg.loadFrom(grammarFile, this.pApplet);
 		
-		String pathToWordLists = pApplet.dataPath("");
+		String pathToWordLists = pApplet.dataPath("") + "/wordLists";
+
+		/*
+
+		would really rather have a check if this directory exists or not and
+		then open a file DirectoryBrowser so the user can find it
+		but I don't know how to do that
+
+		 */
+
+
 		File file = new java.io.File(pathToWordLists);
+
+
 		String[] wordListFilenames = file.list(movFilter);
 
 		for (int i = 0; i < wordListFilenames.length; i++) {
