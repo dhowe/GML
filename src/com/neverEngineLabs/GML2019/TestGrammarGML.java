@@ -4,10 +4,10 @@ Generative Movement Language is a context-free grammar generator.
  It uses a lexicon of movement language, based loosely on 
  Ann Hutchinson Guest's descriptions in the book 'Labanotation'.
  
- The program loads in  wordlists and builds the definitions of its  grammar  
- dynamically, importing all .txt files it finds in the /data directory 
+ The program loads in  wordLists and builds the definitions of its  grammar  
+ dynamically, importing all .txt files it finds in the /data/wordLists directory 
  
- It can interchange grammar files ( in /data/grammarFiles) randomly 
+ It can interchange JSON grammar files ( in /data/grammarFiles) randomly 
  and repopulate them with definitions before expanding
  
  press 's' to save a .txt and a .png
