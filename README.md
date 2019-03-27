@@ -29,9 +29,7 @@ Generative Movement Language is a context-free grammar generator.
  It can interchange JSON grammar files ( in /data/grammarFiles) randomly 
  and repopulate them with definitions before expanding
  
- press 's' to save a .txt and a .png
- press 'r' to see a breakdown of non-repeating/POS tagged/Open Class tokens derived from the generated result
- press 'p' to send sequence to Kyma
+
  
  Code maintained by Cristian Vogel 2010 - 2019
  with essential contributions from Daniel C.Howe and MDK (aka Normalised)
