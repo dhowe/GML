@@ -33,7 +33,8 @@ Generative Movement Language is a context-free grammar generator.
  press 'r' to see a breakdown of non-repeating/POS tagged/Open Class tokens derived from the generated result
  press 'p' to send sequence to Kyma
  
- (c) cristian vogel 2010
+ Code maintained by Cristian Vogel 2010 - 2019
+ with essential contributions from Daniel C.Howe and MDK (aka Normalised)
  
  RiTa natural language library by Daniel C. Howe
  http://www.rednoise.org/rita/
