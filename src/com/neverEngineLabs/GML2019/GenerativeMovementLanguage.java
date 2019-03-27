@@ -1,4 +1,4 @@
-/*
+package com.neverEngineLabs.GML2019;/*
 Generative Movement Language is a context-free grammar generator.
  
  It uses a lexicon of movement language, based loosely on 
@@ -21,6 +21,17 @@ Generative Movement Language is a context-free grammar generator.
  
  */
 
+
+/*
+this code was originally a Processing Sketch designed to be
+sending OSC signals to a Symbolic Sound Kyma system, where
+its preset list would try to map to recognised words
+in the generated text
+
+not entirely working yet.... in 2019
+
+ */
+
 import java.io.File;
 import java.util.*;
 
@@ -31,6 +42,7 @@ import oscP5.*;
 import netP5.*;
 import rita.*;
 import rita.support.Conjugator;
+
 
 public class GenerativeMovementLanguage extends PApplet {
 	
@@ -95,7 +107,6 @@ public class GenerativeMovementLanguage extends PApplet {
 		RiGrammar rg = new RiGrammar();
 		rg.loadFrom("grammarFiles/CristianImprov1.json");
 		System.out.println(rg.expand(this));
-		if (1==1) return;
 		frameRate(5);
 		smooth();
 		rectMode(CORNERS);
@@ -741,7 +752,7 @@ public class GenerativeMovementLanguage extends PApplet {
 		for (Iterator it = defs.keySet().iterator(); it.hasNext();) {
 			String rule = (String) it.next();
 			System.out.println(rule+": "+defs.get(rule));
-			if (1==1) continue;
+
 			String def = (String) defs.get(rule); // converts all the terminals of the
 																						// rule into a string
 

@@ -1,4 +1,0 @@
-twist
-rotate
-turn
-spin

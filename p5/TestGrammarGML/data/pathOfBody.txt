@@ -1,3 +1,0 @@
-walk in diagonal
-zig-zag
-move in spiral

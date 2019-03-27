@@ -1,8 +1,0 @@
-step
-turn
-jump
-pace
-twist
-roll
-fall
-bound
