@@ -15,7 +15,8 @@ with essential contributions from Daniel Howe of RiTa lib and MDK of Korisna Med
 
 <br>
 
-### In IntelliJ Idea
+### Project was originally written in Processing
+### and is now being developed in the IntelliJ Idea IDE
 #### Entry point TestGrammerGML.java 
 
 Generative Movement Language is a context-free grammar generator.
@@ -37,5 +38,8 @@ Generative Movement Language is a context-free grammar generator.
  
  RiTa natural language library by Daniel C. Howe
  http://www.rednoise.org/rita/
+ 
+Processing core 
+http://processing.org/
 
 
