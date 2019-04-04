@@ -20,8 +20,9 @@ with essential contributions from Daniel Howe of RiTa lib and MDK of Korisna Med
 
 Generative Movement Language is a context-free grammar generator.
  
- It uses a lexicon of movement language, based loosely on 
- Ann Hutchinson Guest's descriptions in the book 'Labanotation'.
+ In addition to Token lists defined in the grammar file, GML uses an additional l
+ exicon of movement language definitions, based loosely on 
+ Ann Hutchinson Guest's descriptions from her book 'Labanotation'.
  
  The program loads in  wordLists and builds the definitions of its  grammar  
  dynamically, importing all .txt files it finds in the /data/wordLists directory 
