@@ -12,30 +12,35 @@ with essential contributions from Daniel Howe of RiTa lib and MDK of Korisna Med
  */
 
 
-import java.awt.*;
-import java.io.File;
 
-import com.sun.deploy.panel.ExceptionListDialog;
+import java.io.File;
 import processing.core.PApplet;
 import rita.*;
 import rita.support.Conjugator;
 
-import static processing.core.PApplet.println;
+
+import static processing.core.PApplet.println; //need to do static import of Processing methods
 
 
 public class GrammarGML {
+
 
 	protected PApplet pApplet;
 	protected RiGrammar grammar;
 	protected Conjugator conjugator;
 	protected String pathToWordLists;
 
+	public String latestTimeStamp;
 
 	private String lineBreaker;
 	private FileIOHelpers fileHelper;
 	private File wordListFolder;
+	private RiGrammar rg;
 
-	public GrammarGML(PApplet p) {
+
+
+
+    public GrammarGML(PApplet p) {
 		this(p, "/");
 	}
 
@@ -45,10 +50,13 @@ public class GrammarGML {
 		lineBreaker = lineBreakChar;
 		conjugator = new Conjugator();
 		fileHelper = new FileIOHelpers();
+         rg = new RiGrammar();
 
 		// default wordLists path todo: make user definable and disk stored preference?
 		pathToWordLists = "data/wordLists";
+		latestTimeStamp="";
 	}
+
 
 	public void loadFrom(String grammarFile) {
 		println("Load Grammar from " + grammarFile);
@@ -68,7 +76,7 @@ public class GrammarGML {
 
 		println("Word List Folder " + wordListFolder.getAbsolutePath());
 
-		println( "exists?" +  ((File) wordListFolder).exists());
+		println( "exists? " +  ((File) wordListFolder).exists());
 
 
 		fileHelper.checkFolderExistsOrGetUserLocation(wordListFolder, (File f) -> {
@@ -82,15 +90,46 @@ public class GrammarGML {
 
 	}
 
+
+
+
 	public RiGrammar createGrammar(String grammarFile) {
 
 		// MDK: If you only do this once I would move construction of RiGrammar into the GrammarGML constructor
-		RiGrammar rg = new RiGrammar();
+	//	RiGrammar rg = new RiGrammar();
 		rg.loadFrom(grammarFile, pApplet);
 
 		// MDK : Also we don't load the words immediately, we'll load them when the folder select has completed
 		return rg;
 	}
+
+	public String[] filesInSameDirectory(File asThisfile) {
+
+		/**
+		 * List Text Files modification of listing-files taken from
+		 * http://wiki.processing.org/index.php?title=Listing_files
+		 *
+		 * @author antiplastik
+		 */
+
+		//todo: functionality for userdefinable grammarfile path
+		java.io.File folder = new java.io.File("/data");
+
+		// list the files in the data folder passing the filter as parameter
+		return folder.list(movFilter);
+	}
+
+	// returns a filter (which returns true if file's extension is .json )
+
+	java.io.FilenameFilter movFilter = new java.io.FilenameFilter() {
+
+		public boolean accept(File dir, String name) {
+
+			//return ((name.toLowerCase().endsWith(".json")) || (name.toLowerCase().startsWith("Dance")));
+			return (name.toLowerCase().endsWith(".json"));
+		}
+	};
+
 
 	private void loadWordLists() {
 		String[] wordListFilenames = wordListFolder.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
@@ -108,13 +147,56 @@ public class GrammarGML {
 		}
 	}
 
-	public String[] expand() {
+	public String toTitleCase( String lineOfText) {
+
+		String[] tokens = lineOfText.split(" ");
+		String result = "";
+
+		for (int i=0; i< tokens.length; i++) {
+			result = result.concat(capitalise((tokens[i]+" ")));
+		}
+		return result;
+	}
+
+	public String[] generateTextAndSplitAtLineBreak() {
 
 		String[] lines = grammar.expand(this).split(lineBreaker);
 		for (int i = 0; i < lines.length; i++) {
 			lines[i] =  lines[i].trim();
 		}
+
+		latestTimeStamp = timeStamp(true);
 		return lines;
+	}
+
+	/* method returns a string with a formatted time stamp
+	optionally add date
+	*/
+	public static String timeStamp( boolean addDate) {
+
+		String dateStamp ="";
+		String timeStamp = PApplet.hour() +":"+ PApplet.minute();
+		if (addDate) {
+
+			//dateStamp = date.toString();
+			// Java date version...needs more work to get right
+			// using Processing date methods instead
+			dateStamp = PApplet.day() +"/"+ PApplet.month() +"/"+ PApplet.year();
+		}
+		return (dateStamp+"@"+timeStamp);
+	}
+
+
+	public String timeStamp( ) {
+
+
+		String timeStamp = PApplet.hour() +":"+ PApplet.minute();
+		return ("@"+timeStamp);
+	}
+
+	public String generateTitleFromLineOfText( String lineOfText){
+
+        return lineOfText.substring( 0,lineOfText.indexOf(' ' ,16));
 	}
 
 	// --------------------------- callbacks from grammars --------------------------------
