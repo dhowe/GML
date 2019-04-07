@@ -19,7 +19,7 @@
   
   "<endPoint>": "floor | center | back | computer",
   
-  "<thingsWePass>": "weight | light | air | objects | memories | jokes | stories | meat | clothes | paper | water", 
+  "<thingsWePass>": "weight | light | air | `randomNumber(2,5);` objects | memories | jokes | stories | meat | clothes | paper | water",
   
   "<retrace>": "retraces steps | rewinds | reverses flow | returns",
  

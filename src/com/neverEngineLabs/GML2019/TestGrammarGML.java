@@ -66,7 +66,7 @@ public class TestGrammarGML extends PApplet {
         grammar.loadFrom(currentGrammarFile); // todo:  user or random selection of new grammars from disk
         textSize(P);
 		textAlign(CENTER, CENTER);
-		setTitleBar(latestTitle + GrammarGML.timeStamp(true));
+		setTitleBar(latestTitle + GrammarGML.timeStampWithDate());
 		displayText(latestTitle, lines, 28);
 	}
 
@@ -85,7 +85,7 @@ public class TestGrammarGML extends PApplet {
 
 	public void displayText(String title, String[] body, int lineHeight ) {
 
-		drawDecorativeBackground( 30, body.length);
+		drawDecorativeBackground( 15, body.length);
 		textSize(H1);
 		text(title, width/2, lineHeight);
 
@@ -103,7 +103,7 @@ public class TestGrammarGML extends PApplet {
 
 	public void drawDecorativeBackground(int backgroundGrey, int numberOfLines) {
 
-		background(10);
+		background(backgroundGrey);
 
 		//fill(250);
 		noiseDetail(8, 0.8f);
@@ -126,8 +126,8 @@ public void expandGrammar() {
 	generationCounter++;
 
 	if (lines.length > 0) {
-		lines = shuffle(lines);
-		latestTitle = grammar.generateTitleFromLineOfText(grammar.toTitleCase(lines[0])); //todo: more random title gen
+		lines = shuffle(lines); //todo: allow shuffle from a grammar callback
+		latestTitle = grammar.generateTitleFromFirstLineOfText(grammar.toTitleCase(lines[0])); //todo: more random title gen
 		setTitleBar(latestTitle);
 		latestTimeStamp = grammar.latestTimeStamp;
 	} else {
@@ -156,7 +156,7 @@ public void expandGrammar() {
 
 	public void mouseClicked() {
 	expandGrammar();
-	println(getGeneratedTextAsLines());
+	println((Object) getGeneratedTextAsLines());
 	}
 
 
@@ -168,7 +168,7 @@ public void expandGrammar() {
 			//try to save to disk, post status in window title
 			if (saveOutputToDisk(getGeneratedTextAsLines())) {
 
-				setTitleBar("Saved successfully "+grammar.timeStamp(true));
+				setTitleBar("Saved successfully "+grammar.timeStampWithDate());
 				savedFlag = true;
 				displayText(latestTitle, lines, 28);
 
@@ -192,7 +192,7 @@ public void expandGrammar() {
 
 		//footer
 		sList.append("\n\n"); //make some space
-		sList.append("Generated:" + grammar.timeStamp(true)); //add timestamp with date to output
+		sList.append("Generated:" + grammar.timeStampWithDate());
 		println(fn);
 		try {
 			saveStrings(fn,sList.array());

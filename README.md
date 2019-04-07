@@ -1,6 +1,6 @@
-###Generative Movement Language
+## Generative Movement Language
 
-####by Cristian Vogel
+### by Cristian Vogel
 
 A token based score generator which uses context-free grammars and (optional) word lists to generate text scores. By working with words (aka Tokens) as symbolic data for input and output, a score can be assigned meaning through interpretation by human performers and/or software agents.
 
@@ -11,7 +11,7 @@ Project was originally written in Processing
 and is now being developed in the IntelliJ Idea IDE
 Entry point TestGrammerGML.java
 
-###Generative Movement Language is a context-free grammar generator.
+### Generative Movement Language is a context-free grammar generator.
 
 In addition to Token lists defined in the grammar file, GML uses an additional lexicon of movement language definitions, based loosely on Ann Hutchinson Guest's descriptions from her book 'Labanotation'.
 

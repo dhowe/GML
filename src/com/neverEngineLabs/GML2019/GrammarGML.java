@@ -134,7 +134,8 @@ public class GrammarGML {
 		String[] wordListFilenames;
 		wordListFilenames = wordListFolder.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
 
-		for (int i = 0; i < wordListFilenames.length; i++) {
+		for (int i = 0
+			 ; i < wordListFilenames.length; i++) {
 
 			String[] wordList = pApplet.loadStrings(wordListFolder.getAbsolutePath() + "/" + wordListFilenames[i]);
 			String ruleName = "<" + wordListFilenames[i].replaceAll(".txt", "") + ">";
