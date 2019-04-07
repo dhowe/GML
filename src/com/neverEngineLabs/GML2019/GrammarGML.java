@@ -19,7 +19,8 @@ import rita.*;
 import rita.support.Conjugator;
 
 
-import static processing.core.PApplet.println; //need to do static import of Processing methods
+
+import static processing.core.PApplet.*;
 
 
 public class GrammarGML {
@@ -108,7 +109,8 @@ public class GrammarGML {
 		/**
 		 * List Text Files modification of listing-files taken from
 		 * http://wiki.processing.org/index.php?title=Listing_files
-		 *
+		 * @return string [] of filtered directory
+		 * @param
 		 * @author antiplastik
 		 */
 
@@ -121,18 +123,16 @@ public class GrammarGML {
 
 	// returns a filter (which returns true if file's extension is .json )
 
-	java.io.FilenameFilter movFilter = new java.io.FilenameFilter() {
+	java.io.FilenameFilter movFilter = (dir, name) -> {
 
-		public boolean accept(File dir, String name) {
-
-			//return ((name.toLowerCase().endsWith(".json")) || (name.toLowerCase().startsWith("Dance")));
-			return (name.toLowerCase().endsWith(".json"));
-		}
+		//return ((name.toLowerCase().endsWith(".json")) || (name.toLowerCase().startsWith("Dance")));
+		return (name.toLowerCase().endsWith(".json"));
 	};
 
 
 	private void loadWordLists() {
-		String[] wordListFilenames = wordListFolder.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
+		String[] wordListFilenames;
+		wordListFilenames = wordListFolder.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
 
 		for (int i = 0; i < wordListFilenames.length; i++) {
 
@@ -165,46 +165,78 @@ public class GrammarGML {
 			lines[i] =  lines[i].trim();
 		}
 
-		latestTimeStamp = timeStamp(true);
+		latestTimeStamp = timeStampWithDate();
 		return lines;
 	}
 
-	/* method returns a string with a formatted time stamp
-	optionally add date
-	*/
-	public static String timeStamp( boolean addDate) {
+	/**
+	 * Uses Processing's time formatting to construct day/month/year@hour:minute
+	 * @return String formatted hour and minute
+	 *
+	 *
+	 */
+	public static String timeStampWithDate() {
 
-		String dateStamp ="";
+		String dateStamp;
 		String timeStamp = PApplet.hour() +":"+ PApplet.minute();
-		if (addDate) {
+
 
 			//dateStamp = date.toString();
 			// Java date version...needs more work to get right
 			// using Processing date methods instead
 			dateStamp = PApplet.day() +"/"+ PApplet.month() +"/"+ PApplet.year();
-		}
+
 		return (dateStamp+"@"+timeStamp);
 	}
 
 
-	public String timeStamp( ) {
+	/**
+	 * Uses Processing's time formatting to construct @hour:minute
+	 * @return String formatted hour and minute
+	 *
+	 */
+	public String timeStamp() {
 
 
 		String timeStamp = PApplet.hour() +":"+ PApplet.minute();
+		println(timeStamp);
 		return ("@"+timeStamp);
 	}
 
-	public String generateTitleFromLineOfText( String lineOfText){
+	public String generateTitleFromFirstLineOfText(String lineOfText){
 
         return lineOfText.substring( 0,lineOfText.indexOf(' ' ,16));
 	}
 
 	// --------------------------- callbacks from grammars --------------------------------
 
+	/**
+	 * Method called from Grammar using backtick syntax
+	 * Example:  `capitalise(<timingAdverb>);`
+	 * @param word Word to be Capitalised
+	 * @return String with capital letter
+	 *
+	 *
+	 */
 	String capitalise(String word) {
 
 		return RiTa.upperCaseFirst(word);
 	}
+
+	/**
+	 * Method called from Grammar using backtick syntax
+	 * Conjugates the correct verb infection from infinitive
+	 * Adds " by" if conjugator deems the result to be Passive
+	 * Example with random verb from existing wordlist:
+	 * 	`conjugate(singular, 3rd, s, <transferenceOfWeight>);`
+	 * Example inline:
+	 * 	`conjugate(singular, 3rd, ing, "run");`
+	 * @param number singluar or plural
+	 * @param person 1st 2nd or 3rd
+	 * @param tense ing = present progressive / s = present simple
+	 * @param verb infinitive to be conjugated
+	 * @return conjugated verb String
+	 */
 
 	String conjugate(String number, String person, String tense, String verb) {
 
@@ -215,21 +247,44 @@ public class GrammarGML {
 		else if (tense.equals("s")) {
 			tense = "present"; // "present simple";
 		}
-		String s = conjugator.conjugate(number, person, tense, verb);
-		if (conjugator.isPassive()) s += " by";
-		return s;
+		String conjugatedVerb = conjugator.conjugate(number, person, tense, verb);
+		if (conjugator.isPassive()) conjugatedVerb += " by";
+		return conjugatedVerb;
 	}
 
-	String rand(float r) {
+	/**
+	 * Method called from Grammar using backtick syntax
+	 *
+	 * @param floor lowest limit of range
+	 * @param ceiling highest limit of range
+	 * @return string representation of random integer
+	 */
+	String randomNumber(int  floor, int ceiling) {
 
-		return PApplet.str(PApplet.ceil(pApplet.random(1, r)));
+		return str(ceil(pApplet.random(floor, ceiling)));
 	}
 
+	/**
+	 * Method called from Grammar using backtick syntax
+	 * tries to return a unique pairing from a particular rule
+	 * ! Needs three or more tokens in a rule or could crash
+	 * ! Note the rule name should NOT be enclosed in < >
+	 * Example: `uniquePair( bodyPartsPlural, and)`
+	 * @param ruleName rule name from which to make a unique pair
+	 * @param prep combining preposition
+	 * @return string formatted like this example 'leg and elbow'
+	 */
 	String uniquePair(String ruleName, String prep) {
-
+		int i=0;
 		String rule = '<' + ruleName + '>';
-		String a = grammar.expandFrom(rule), b = a;
-		while (a.equals(b)) b = grammar.expandFrom(rule);
+		String a = grammar.expandFrom(rule);
+		String b = a;
+
+		while (a.equals(b)) {
+			b = grammar.expandFrom(rule); i++;
+			println(String.format("Trying unique pair: %d times", i));
+			if (i>20) { break; }
+		}
 		return a + ' ' + prep + ' ' + b;
 	}
 
