@@ -6,11 +6,11 @@ A token based score generator which uses context-free grammars and (optional) wo
 
 GML system and codebase was conceived and maintained by Cristian Vogel with essential contributions from Daniel Howe of RiTa lib and MDK (aka Normalised)
 
-Note: RiTa grammars must now be in proper JSON or YAML format
+*Note: RiTa grammars must now be in proper JSON or YAML format*
 
 Project was originally written in Processing
 and is now being developed in the IntelliJ Idea IDE
-** Current entry point TestGrammerGML.java **
+**Current entry point TestGrammerGML.java**
 
 ![alt text](https://www.cristianvogel.com/publicimage/generatedRitualsExample.png "Example output")
 
@@ -22,7 +22,7 @@ In addition to Token lists defined in the grammar file, GML uses an additional l
 The program loads in wordLists and builds the definitions of its grammar
 dynamically, importing all .txt files it finds in the /data/wordLists directory
 
-~~ It can interchange JSON grammar files ( in /data/grammarFiles) randomly and repopulate them with definitions before expanding ~~
+~~It can interchange JSON grammar files ( in /data/grammarFiles) randomly and repopulate them with definitions before expanding~~
 
 Code maintained by Cristian Vogel 2010 - 2019 with essential contributions from Daniel C.Howe and MDK (aka Normalised)
 
