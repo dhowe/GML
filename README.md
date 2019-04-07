@@ -12,7 +12,7 @@ Project was originally written in Processing
 and is now being developed in the IntelliJ Idea IDE
 ** Current entry point TestGrammerGML.java **
 
-![alt text](https://www.endless-process.net/public_html/siteimages/generatedRitualsExample.png "Example output")
+![alt text](https://www.cristianvogel.com/publicimage/generatedRitualsExample.png "Example output")
 
 
 ### Generative Movement Language is a context-free grammar generator.
