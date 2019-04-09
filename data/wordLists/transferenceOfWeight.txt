@@ -1,3 +1,6 @@
 transfer
 lean
 suspend
+pass
+distribute
+balance

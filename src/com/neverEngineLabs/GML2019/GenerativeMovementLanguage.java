@@ -23,12 +23,12 @@ Generative Movement Language is a context-free grammar generator.
 
 
 /*
-this code was originally a Processing Sketch designed to be
+this program was originally a Processing Sketch designed to be
 sending OSC signals to a Symbolic Sound Kyma system, where
 its preset list would try to map to recognised words
 in the generated text
 
-not entirely working yet.... in 2019
+
 
  */
 
@@ -42,6 +42,8 @@ import oscP5.*;
 import netP5.*;
 import rita.*;
 import rita.support.Conjugator;
+
+
 
 
 public class GenerativeMovementLanguage extends PApplet {
@@ -151,7 +153,7 @@ public class GenerativeMovementLanguage extends PApplet {
 		// the grammar on the fly
 		// sweet.
 
-		wordLists = new String[wordListFilenames.length][50]; // declare big enough
+		wordLists = new String[wordListFilenames.length][100]; // declare big enough
 																													// 2D array?
 		for (int i = 0; i < wordListFilenames.length; i++) {
 			String path = (pathToWordLists + "/" + wordListFilenames[i]);
@@ -276,16 +278,7 @@ public class GenerativeMovementLanguage extends PApplet {
 
 			seperateTokens = (String[]) uniqueOpenClassWords.toArray(seperateTokens); // strip
 																																								// all
-																																								// the
-																																								// closed
-																																								// class
-																																								// words
-																																								// ,
-																																								// the
-																																								// and
-																																								// ,
-																																								// he
-																																								// etc
+																																					// etc
 			println("Unique tokens list:" + uniqueListSize + " All tokens:" + allOpenClassWords.length);
 
 			// title ideas, generated before tagging the open class words
@@ -325,6 +318,7 @@ public class GenerativeMovementLanguage extends PApplet {
 	}
 
 	private static List closedClassWords = null;
+
 	public static String[] stripClosedClassWords(String[] words) {
 
 		if (closedClassWords == null) closedClassWords = Arrays.asList(RiTa.CLOSED_CLASS_WORDS);
