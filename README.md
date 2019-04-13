@@ -9,17 +9,16 @@ GML system and codebase was conceived and maintained by Cristian Vogel with esse
 
 Project was originally written in Processing
 and is now being developed in the IntelliJ Idea IDE
-**Current entry point TestGrammerGML.java**
+**Current entry point RunGML.java**
 
 ![alt text](https://www.cristianvogel.com/publicimage/generatedRitualsExample.png "Example output")
 
 
 ### Generative Movement Language is a context-free grammar generator.
 
-In addition to Token lists defined in the grammar file, GML uses an additional lexicon of movement language definitions, based loosely on Ann Hutchinson Guest's descriptions from her book 'Labanotation'.
+In addition to Token lists defined in grammar files, GML uses an additional lexicon of movement language definitions stored in the data/wordLists folder. These definitions were derived from Ann Hutchinson Guest's descriptions from her book 'Labanotation'.
 
-The program loads in wordLists and builds the definitions of its grammar
-dynamically, importing all .txt files it finds in the /data/wordLists directory
+The program import all .txt files it finds in the /data/wordLists directory and adds them in with any definitions found inside the grammar.
 
 ~~It can interchange JSON grammar files ( in /data/grammarFiles) randomly and repopulate them with definitions before expanding~~
 
