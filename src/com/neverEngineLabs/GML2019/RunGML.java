@@ -29,26 +29,23 @@ import processing.data.StringList;
 
 
 
-import oscP5.*;
-import rita.RiTa;
 
-
-public class TestGrammarGML extends PApplet {
+public class RunGML extends PApplet {
 	//constructor with field assignments
 	private GrammarGML grammar = new GrammarGML(this);
-	private String[] lines = { "Click to Generate..." };
-	private String currentGrammarFile = "grammarFiles/GeneratedRitual_1.json";
-	public String latestTitle = "Welcome to GenMov";
-	public String latestTimeStamp = "";
-	public Boolean savedFlag = false;
-	public int generationCounter = 0;
+	private String[] lines = { "Press space to Generate...\nPress 's' to save..." };
+	private String currentGrammarFile = "grammarFiles/FlowerSpiral.json";
+	private String latestTitle = "Welcome to GML";
+	private String latestTimeStamp = "Generative Movement Language";
+	private Boolean savedFlag = false;
+	private int generationCounter = 0;
 
-	// OSC setup
-    public OscP5 oscP5 = new OscP5(this, 8000); // listener
+	// todo: OSC setup
+   // public OscP5 oscP5 = new OscP5(this, 8000); // listener
 
 	//Some defs
 	//font sizes
-	public int  H1=25, P=20, TINY=12;
+	public final int  H1=25, P=20, TINY=12;
 
 
 	////////////////////////
@@ -59,14 +56,14 @@ public class TestGrammarGML extends PApplet {
 
 	public void settings() {
 
-		size(1000, 800);
+		size(1000, 900);
 	}
 
 	public void setup() {
         grammar.loadFrom(currentGrammarFile); // todo:  user or random selection of new grammars from disk
         textSize(P);
 		textAlign(CENTER, CENTER);
-		setTitleBar(latestTitle + GrammarGML.timeStampWithDate());
+		setTitleBar(latestTitle + grammar.getLatestTimeStamp());
 		displayText(latestTitle, lines, 28);
 	}
 
@@ -85,7 +82,7 @@ public class TestGrammarGML extends PApplet {
 
 	public void displayText(String title, String[] body, int lineHeight ) {
 
-		drawDecorativeBackground( 15, body.length);
+		drawDecorativeBackground( 15, body.length + generationCounter);
 		textSize(H1);
 		text(title, width/2, lineHeight);
 
@@ -94,7 +91,7 @@ public class TestGrammarGML extends PApplet {
 
 		textSize(P);
 		for (int j = 0; j < body.length; j++) {
-			text(lines[j], width/2, height/3 + j * lineHeight);
+			text(lines[j], width/2, (height/5) + j * lineHeight);
 		}
 
 
@@ -126,8 +123,9 @@ public void expandGrammar() {
 	generationCounter++;
 
 	if (lines.length > 0) {
-		lines = shuffle(lines); //todo: allow shuffle from a grammar callback
-		latestTitle = grammar.generateTitleFromFirstLineOfText(grammar.toTitleCase(lines[0])); //todo: more random title gen
+		/* lines = grammar.shuffle(lines);
+		//todo: allow shuffle from a grammar callback */
+		latestTitle = grammar.generateTitleFromLineOfText(lines[0]);//todo: more random title gen
 		setTitleBar(latestTitle);
 		latestTimeStamp = grammar.latestTimeStamp;
 	} else {
@@ -138,16 +136,7 @@ public void expandGrammar() {
 	displayText(latestTitle, lines, 28);
 }
 
-	/* Shuffles a collection of Strings */
-	public String [] shuffle( String [] collection) {
-		int [] randomIndex = RiTa.randomOrdering(collection.length);
-		println(randomIndex);
-		String [] result = new String[collection.length];
-		for (int i=0; i<collection.length;i++) {
-			result[i] = collection[randomIndex[i]];
-		}
-	return result;
-	}
+
 
 
 	public String[] getGeneratedTextAsLines() {
@@ -216,8 +205,8 @@ public void expandGrammar() {
 
 	public static void main(String[] args) {
 
-		System.out.println("Running " + TestGrammarGML.class.getName());
-		String[] options = {  TestGrammarGML.class.getName() };
+		System.out.println("Running " + RunGML.class.getName());
+		String[] options = {  RunGML.class.getName() };
 		PApplet.main(options);
 	}
 
