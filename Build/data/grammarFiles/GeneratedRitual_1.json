@@ -1,0 +1,37 @@
+
+{
+  "<start>": 
+  "<phrase1> % <phrase2> % <phrase3> % <phrase7> % <regenerate> | <phrase1> % <phrase4> % <phrase5> % <phrase6> % <phrase7> % <regenerate> | <phrase7> % <wheelAction> % <start>",  
+
+  "<phrase1>": "<oneOfUs> `conjugate(singular, 3rd, ing, <nonMovementVerb>);` near the <somewhere> of the space.",
+  
+  "<phrase2>": "<oneOfUs> `conjugate(singular, 3rd, s, <movementVerbDirectional>);` into <partsOfTheSpace>" ,
+  
+  "<phrase3>": "<oneOfUs> `conjugate(singular, 3rd, s, <transferenceOfWeight>);` the weight on `uniquePair(bodyPartsPlural, and)`.",
+  
+  "<phrase4>": "<oneOfUs> <retrace> <flowAdverb>",
+  
+  "<phrase5>": "`capitalise(<attitudeAdverb>);`, we begin to <transferenceOfWeight> <thingsWePass>",
+  
+  "<phrase6>": "<oneOfUs> `conjugate(singular, 3rd, s, <absenceOfSupport>);` uncertainly",
+  
+  "<phrase7>": "`capitalise(<timingAdverb>);` each of us is `conjugate(singular, 3rd, ing, <lossOfBalance>);` to the <endPoint>",
+  
+  "<endPoint>": "floor | center | back | computer",
+  
+  "<thingsWePass>": "weight | light | air | `randomNumber(2,5);` objects | memories | jokes | stories | meat | clothes | paper | water",
+  
+  "<retrace>": "retraces steps | rewinds | reverses flow | returns",
+ 
+  "<oneOfUs>": "Gunver | Natalie | Sofia | Someone | Anja | Patrick ",
+ 
+  "<somewhere>": "left | right | front | back | middle",
+
+  "<regenerate>": " <oneOfUs> generates a new ritual % using `uniquePair(bodyPartsSingularOfOne, and)`.",
+
+  "<wheelAction>": " The <dizzyGlitch> `conjugate(singular, 3rd, ing, <movementVerbRotation>);` in the <somewhere> of the <space>",
+
+  "<dizzyGlitch>": "paint | audience | dirt | projection | music ",
+
+  "<space>" : "room | corner | theatre | sound system"
+}

@@ -1,0 +1,37 @@
+#My Improv that I did on 13th October 2011
+
+#Cristian is standing on the right of the space
+#he slides into the space
+#he feels the weight on hands and feet
+#he rewinds
+#he transfers weight in a challenging way
+#he balances uncertainly
+#He falls slowly and lands on the floor sitting
+#He waits and rewinds
+#He enters the space three points at a time
+#He slides to the back 
+#He makes L shape and rests
+#He watches the time
+#He lies back on the floor
+#He rolls in the air somehow
+#and he needs to rest again
+#he is lying down
+#he flops his limbs
+#He spins on the floor with head as centre point
+#he stands carefully facing the opposite side
+
+{
+  "<start>": "<phrase1> % <phrase2> % <phrase3> % <phrase7> | <phrase1> % <phrase4> % <phrase5> % <phrase6> % <phrase7>",
+  "<phrase1>": "<oneOfUs> `conjugate(singular, 3rd, ing, <nonMovementVerb>);` near the <somewhere> of `set(area,<partsOfTheSpace>)`.",
+  "<phrase2>": "<oneOfUs> `conjugate(singular, 3rd, s, <movementVerbDirectional>);` into `twice(<partsOfTheSpace>);`",
+  "<phrase3>": "<oneOfUs> `conjugate(singular, 3rd, s, <transferenceOfWeight>);` the weight on `uniquePair(bodyPartsPlural, and)`.",
+  "<phrase4>": "<oneOfUs> <retrace> <flowAdverb>",
+  "<phrase5>": "<attitudeAdverb>, we begin to <transferenceOfWeight> <thingsWePass>",
+  "<phrase6>": "<oneOfUs> `conjugate(singular, 3rd, s, <absenceOfSupport>);` uncertainly with <otherPerson>",
+  "<phrase7>": "`capitalise(<timingAdverb>);` each of us is `conjugate(singular, 3rd, ing, <lossOfBalance>);` to the <endPoint>",
+  "<endPoint>": "floor | center | back | computer",
+  "<thingsWePass>": "weight | light | air | objects | memories | jokes | stories",
+  "<retrace>": "retraces steps | rewinds | reverses flow",
+  "<oneOfUs>": "Jou | Mitsu | Cristian | One of us",
+  "<somewhere>": "left | right | front | back"
+}

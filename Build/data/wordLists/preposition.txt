@@ -1,0 +1,21 @@
+around
+beneath
+beside
+on
+behind
+in opposition to [0.2]
+inside of
+into
+on top of
+onto
+in the middle of
+towards
+over
+from
+out of
+close to
+down on
+against [0.8]
+across
+somewhere around
+down in

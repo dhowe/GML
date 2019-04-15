@@ -1,0 +1,11 @@
+run
+walk
+crawl
+enter
+exit
+roll
+move
+approach
+stagger
+point
+jump

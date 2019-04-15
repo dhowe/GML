@@ -1,0 +1,14 @@
+hand
+heel
+foot
+arm
+palm
+knee
+leg
+hand
+elbow
+ankle
+wrist
+finger
+fist
+shoulder

@@ -1,0 +1,42 @@
+
+{
+"<start>": "<scene1> % <scene2> % <scene3> % <scene4> [1.0] | <scene4> % <scene2> % <scene3> % <scene1> [0.5] | <scene4> [0.6] | <scene1> <scene4> [0.8] ",
+
+"<scene1>" : "The `set(setting, <setting>);` is <startingState>. % There is a `set(table, <largeSurface>);` in the centre of the `get(setting);`.% <aNumber> <containers> filled with <liquid> are on the ground close to the `get(table);`.% Nathalie and Sofia `conjugate(plural, 3rd, ing, <embrace>)` each other in a <empathicAdjective> <embrace>.% The guest is guided <flowAdverb> towards the `get(table);`.%Nathalie and Sofia guide the guest to <nonMovementVerb> <preposition> the <edge> of the `get(table);`%",
+
+"<scene2>" :
+"Nathalie and Sofia move as if they are <twinMovement> % They <empathicAdverb> remove the <footwear> and `unique(<footwear>)` from the guest % They begin to bathe the feet with water and soft cloths % Then they gently wipe each hand of the guest with <liquid> and <softAdjective> <softThings>",
+
+"<scene3>" :
+"The <empathicAdjective> `set(sound, <sound>);` begins to <movementVerbRotation> % The guest is then helped carefully to lie down on top of the `get(table);`% Sofia and Nathalie stand <opposite> each other % and <empathicAdverb> massage <lotion> into each <bodyPartsSingularOfPair> of the guest% They move around the `get(table);` to hold the <bodyPartsSingularOfOne> and the <bodyPartsPlural>% As they hold the <bodyPartsSingularOfOne> and the <bodyPartsPlural>, they channel the symbol of a <colour> `set(symbol, <symbol>)`% For <aNumber> minutes they pass the `get(symbol)` as the `get(sound);` becomes more <intensity>% they <empathicAdverb> place <softThings> and `unique(<softThings>)` onto the <bodyPartsSingularOfOne>  , <bodyPartsPlural> and chest of the guest",
+
+"<scene4>" :
+"The `get(sound);` finishes. The <softThings> have been placed. % Nathalie and Sofia `conjugate(plural, 3rd, ing, <embrace>)` each other in a `unique(<empathicAdjective>)` <embrace>.% `capitalise(<sound>);` starts and they begin to dance a `unique(<empathicAdjective>)` <waltz> around the `get(table);`.% The `get(sound);` `conjugate(singular, 3rd, s, <endVerb>);` completely and they <nonMovementVerb> with each other.% The <setting> starts to <movementVerbRotation>.",
+
+"<startingState>": "silent | dark with candles lit | dark | a starry night",
+"<endVerb>": "finish | end | disappear | vanish | disintegrate",
+"<opposite>": "opposite | facing | close to | almost touching",
+"<setting>": "real stage | virtual stage | city | crypt | cave",
+"<material>": "metal | bubble | wood | feather | mercury | steel | dirt | glass | coffee | lava | clay | foam",
+"<largeSurface>": "<material> table | <material> table without legs | <largeStructure> of <material> | <largeStructure> of branches | grave | <material> surface | table with legs made of <material>",
+"<largeStructure>": "mountain | ocean | tower | pile | column ",
+"<aNumber>": "three | two | many",
+"<colour>": "green | black | gold | yellow | red | silver | white | neon pink | dark blue",
+"<containers>": "buckets | bowls | eye-balls | ponds | crates | volcanoes | urns | fonts | holy grails",
+"<liquid>": "milk | blood | water | quicksilver | honey | liquid gold | oil | <colour> bile",
+"<empathicAdjective>": "loving | caressing | warm | melting | burning | comforting | soothing | gentle | close | smothering | tuff love [0.5]",
+"<twinMovement>" : "reflecting each other | mirroring each other | moving together | joined together | locked together | glued together",
+"<sound>" : "music | song | distant song | whispering | percussion | frequencies | sound texture | rhythm",
+"<softThings>" : "petals | flowers | electrons | spirals | leaves | feathers | silicon chips | branches",
+"<embrace>" : "embrace | hold | hug | clasp | entwine | entangle | squeeze | caress ",
+"<waltz>" : "Waltz | Tango | Baroque dance | Pasadoble | Bolero | Viennese Waltz | Prophetic dance | Sufi whirling",
+"<symbol>" : "spiral | triangle | circle | wave | square",
+"<footwear>" : "shoes | socks | gloves | glasses | slippers",
+"<softAdjective>" : "soft | velvety | smooth",
+"<intensity>" : "intense | loud | present | textured | rhythmic | wide | clattering | dizzying",
+"<lotion>" : "lotion | gel | oil",
+"<edge>" : "edge | side | perimeter [0.5] | curves | visible part",
+
+  "<info>" : "Flower Spiral % Coded into grammar from a 10 minute performance ritual created by LOGEN % during the MAKROPOL Singularity workshop % at the Multisensory Experience Lab University of Aalborg Copenhagen March 2019 % Grammar coded version extended by Cristian Vogel"
+}
+
