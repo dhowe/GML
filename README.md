@@ -22,8 +22,11 @@ The program import all .txt files it finds in the /data/wordLists directory and 
 
 ~~It can interchange JSON grammar files ( in /data/grammarFiles) randomly and repopulate them with definitions before expanding~~
 
-Code maintained by Cristian Vogel 2010 - 2019 with essential contributions from Daniel C.Howe and MDK (aka Normalised)
+FlowerSpiral grammar file was derived from a performance ritual created by LOGEN performance group during the MELABCph University of Aalborg / MAKROPOL Singularity workshop, April 10th 2019
 
+FlowerSpiral encoded by Cristian Vogel using GML / Generative Movement Language
+https://github.com/cristianvogel/GML/
+
+GML maintained by Cristian Vogel 2010 - 2019 with essential contributions from Daniel C.Howe and MDK (aka Normalised)
 RiTa natural language library by Daniel C. Howe http://www.rednoise.org/rita/
-
 Processing core http://processing.org/
