@@ -1,6 +1,4 @@
-partner 
-otherPerson
-isabelle
-susana
-martin
-loui-clement
+a possible partner
+someone in the audience
+the closest person
+the person farthest away

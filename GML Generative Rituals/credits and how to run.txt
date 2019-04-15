@@ -1,0 +1,11 @@
+To run this you need to have Java 8 SDK installed on your computer!
+
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+This grammar was derived from a ritual created by LOGEN performance group during the MELABCph University of Aalborg / MAKROPOL April 10th 2019
+
+Coded by Cristian Vogel using GML / Generative Movement Language
+
+https://github.com/cristianvogel/GML/
+
+ 

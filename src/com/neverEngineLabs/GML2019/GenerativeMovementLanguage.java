@@ -1,4 +1,15 @@
-package com.neverEngineLabs.GML2019;/*
+package com.neverEngineLabs.GML2019;
+
+/*
+this program was originally a Processing Sketch designed to be
+sending OSC signals to a Symbolic Sound Kyma system, where
+its preset list would try to map to recognised words
+in the generated text - it is included in the repository for future reference
+
+ */
+
+
+/*
 Generative Movement Language is a context-free grammar generator.
  
  It uses a lexicon of movement language, based loosely on 
@@ -22,15 +33,7 @@ Generative Movement Language is a context-free grammar generator.
  */
 
 
-/*
-this program was originally a Processing Sketch designed to be
-sending OSC signals to a Symbolic Sound Kyma system, where
-its preset list would try to map to recognised words
-in the generated text
 
-
-
- */
 
 import java.io.File;
 import java.util.*;

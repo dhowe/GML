@@ -12,6 +12,7 @@ public class FileIOHelpers extends PApplet
 
     public File selectedFolder;
     public boolean waiting;
+    public File selectedFile;
 
 
     public void checkFolderExistsOrGetUserLocation(File path, FileSelectionHandler f) {
@@ -23,16 +24,38 @@ public class FileIOHelpers extends PApplet
 
         if (!path.exists()) {
             waiting = true;
+            println("searching for folder...");
+            //gets local path maybe doesn't work once built?
+            path = new File(PApplet.calcSketchPath());
 
-            path = getPathToHomeFolder();
-            //for some reason, does not show prompt in MacOS Mojave native...
-
-
-            selectFolder("Select Word List data folder:", "folderSelected", path, this, null, null);
+            //for some reason, does not show Prompt in MacOS Mojave native...
+            selectFolder("Looking for "+(path.toString()), "folderSelected", path, this, null, null);
 
         } else {
             // Path does exist, so just hand it back straight away
             f.onFileSelected(path);
+        }
+    }
+
+    public void checkFileExistsOrGetUserLocation(File fileToLookFor, FileSelectionHandler f) {
+
+        // Store the handler to use later (the lambda we supply as the 2nd argument)
+        handler = f;
+
+        selectedFolder = null;
+
+        if (!fileToLookFor.exists()) {
+            waiting = true;
+            println("searching for file....");
+            //gets local path maybe doesn't work once built?
+            File path = new File(PApplet.calcSketchPath());
+
+            //for some reason, does not show Prompt in MacOS Mojave native...
+            selectInput("Locate a valid grammar file...", "fileSelected", path, this, null, null);
+
+        } else {
+            // Path does exist, so just hand it back straight away
+            f.onFileSelected(fileToLookFor);
         }
     }
 
@@ -50,7 +73,22 @@ public class FileIOHelpers extends PApplet
         selectedFolder = selection;
     }
 
-    public File getPathToHomeFolder () {
+
+    public void fileSelected(File selection) {
+        if (selection == null) {
+            PApplet.println("Window was closed or the user hit cancel.");
+        } else {
+            PApplet.println("User selected file " + selection.getAbsolutePath());
+        }
+        // Pass the selection folder back to our code
+        handler.onFileSelected(selection);
+        // NOTE : No return value.
+        waiting = false;
+        selectedFile = selection;
+    }
+
+
+    public File getPathToDesktopFolder() {
 
         return new File(System.getProperty("user.home") + "/Desktop");
     }

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: libs/core3.jar libs/rita.jar libs/snakeyaml-1.15.jar
+Main-Class: com.neverEngineLabs.GML2019.RunGML
+

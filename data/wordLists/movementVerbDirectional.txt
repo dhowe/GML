@@ -8,3 +8,4 @@ move
 approach
 stagger
 point
+jump

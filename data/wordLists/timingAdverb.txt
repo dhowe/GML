@@ -2,6 +2,6 @@ quickly
 slowly
 suddenly
 continuosly
-in a regular fashion
-with the music
-against the music
+randomly
+sporadically
+smoothly
