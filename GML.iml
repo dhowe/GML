@@ -11,5 +11,16 @@
     <orderEntry type="library" name="core3" level="project" />
     <orderEntry type="library" name="rita" level="project" />
     <orderEntry type="library" name="snakeyaml-1.15" level="project" />
+    <orderEntry type="library" name="rita.support" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/rita.support.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="junit" level="project" />
   </component>
 </module>

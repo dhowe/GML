@@ -8,4 +8,5 @@ import java.io.File;
 public interface FileSelectionHandler {
 
     void onFileSelected(File f);
+
 }

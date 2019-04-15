@@ -1,0 +1,22 @@
+To run this you need to have Java 8 SDK installed on your computer!
+
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+
+Press space bar to generate a new text from the grammar.
+Press 'r' to toggle the reduced text with all open-class words removed.
+Press 's' to save the results to disk as an image and text
+
+Feel free to interpret a generated score as music, dance, theatre, film whatever.
+
+
+
+FlowerSpiral grammar file was derived from a performance ritual created by LOGEN performance group during the MELABCph University of Aalborg / MAKROPOL Singularity workshop, April 10th 2019
+
+
+FlowerSpiral encoded by Cristian Vogel using GML / Generative Movement Language
+https://github.com/cristianvogel/GML/
+
+GML maintained by Cristian Vogel 2010 - 2019 with essential contributions from Daniel C.Howe and MDK (aka Normalised)
+RiTa natural language library by Daniel C. Howe http://www.rednoise.org/rita/
+Processing core http://processing.org/

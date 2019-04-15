@@ -1,0 +1,11 @@
+gently
+lovingly
+caringly [0.5]
+tenderly
+mildly
+kindly
+softly
+lightly
+smoothly
+slowly
+carefully
