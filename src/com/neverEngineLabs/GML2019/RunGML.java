@@ -16,9 +16,12 @@ Generative Movement Language is a context-free grammar text generator.
 package com.neverEngineLabs.GML2019;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.data.StringList;
 import rita.RiTa;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Arrays;
 
 
@@ -28,17 +31,19 @@ public class RunGML extends PApplet {
 	private String[] lines = { "Press spacebar to Generate...\nPress 's' to save...\nPress 'i' for info...\nPress 'r' to reduce..." };
 	private String[] linesAlt ;
 	private String currentGrammarFile = "grammarFiles/FlowerSpiral.json";
-	private String latestTitle = "Welcome to GML";
-	private String latestTimeStamp = "Generative Movement Language";
+	private String latestTitle = "Welcome to Generative Movement Language!";
+	private String latestTimeStamp = "Current grammar: "+currentGrammarFile;
 	private Boolean savedFlag = false;
 	private int generationCounter = 0;
 
 	// todo: OSC setup
    // public OscP5 oscP5 = new OscP5(this, 8000); // listener
 
-	//Some defs
 	//font sizes
     private final int  H1=25, P=20, TINY=12;
+    private Map<Integer,PFont> fonts = new HashMap<>();
+
+
 	private boolean displayingInfo = false;
 	private boolean displayingReduced = false;
 
@@ -48,15 +53,20 @@ public class RunGML extends PApplet {
 
 	public void settings() {
 
-		size(1000, 900);
+		size(1000, 900 );
+		pixelDensity(displayDensity());
+
 	}
 
 	public void setup() {
 
 
+		fonts.put(TINY, createFont("fonts/AvenirNext-MediumItalic.ttf", TINY, false));
+		fonts.put(H1, createFont("fonts/LucidaGrande-Bold.ttf", H1, true));
+		fonts.put(P, createFont("fonts/AvenirNext-Medium.ttf", P, true));
 
 	    grammar.loadFrom(currentGrammarFile); // todo:  user or random selection of new grammars from disk
-        textSize(P);
+		setFont(P);
 		textAlign(CENTER, CENTER);
 		setTitleBar(latestTitle + grammar.getLatestTimeStamp());
 		displayText(latestTitle, lines, 28);
@@ -78,13 +88,14 @@ public class RunGML extends PApplet {
 	private void displayText(String title, String[] body, int lineHeight) {
 
 		drawDecorativeBackground( 15, body.length + generationCounter);
-		textSize(H1);
+
+		setFont(H1);
 		text(title, width/2, lineHeight);
 
-		textSize(TINY);
+		setFont(TINY);
 		text((savedFlag ? ("saved " + latestTimeStamp) : latestTimeStamp), width / 2, lineHeight*2);
 
-		textSize(P);
+		setFont(P);
 		for (int j = 0; j < body.length; j++) {
 			text(body[j], width/2, (height/5) + j * lineHeight);
 		}
@@ -92,6 +103,10 @@ public class RunGML extends PApplet {
 
 	}
 
+	private void setFont(int tag) {
+		textFont(fonts.get(tag));
+		textSize(tag);
+	}
 
 	private void drawDecorativeBackground(int backgroundGrey, int numberOfLines) {
 

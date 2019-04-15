@@ -1,7 +1,8 @@
 lie
 stand
-slow
+slow down
 halt
+be
 stop
 hold
 freeze
